@@ -1,0 +1,19 @@
+scrape_configs:
+  - job_name: 'java'
+    scrape_interval: 30s
+    static_configs:
+    - targets:
+      - '192.168.1.177:6060'
+      - '192.168.1.177:6061'
+      - '192.168.1.177:6062'
+
+# alertmanager的地址
+alerting:
+  alertmanagers:
+  - static_configs:
+    - targets:
+      - '192.168.1.177:9093'
+
+# 读取告警触发条件规则
+rule_files:
+  - '/prometheus-config/prom-alert-rules.yml'
